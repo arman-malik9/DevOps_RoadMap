@@ -1,0 +1,7 @@
+--- # My first ansible playbook(target demo)
+- hosts: demo         # "demo" is the group name
+  user: ansible
+  become: yes         # It means giving sudo privilege to the ansible user.
+  connection: ssh   
+  gather_facts: yes   # It provides the nodes information (give Private IP) of demo group.
+

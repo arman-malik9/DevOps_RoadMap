@@ -1,0 +1,18 @@
+--- # Target and Task anible playbook
+#target part
+- hosts: demo       
+  user: ansible
+  become: yes         
+  connection: ssh
+  vars:
+    packagename: apache2
+#Task part
+  tasks:
+    - name: Installation of tree package.
+      action: apt name='{{packagename}}' state=present
+      notify: restart apache2
+  handlers:
+    - name: restart apache2
+      action: service name='{{packagename}}' state=restarted
+  
+

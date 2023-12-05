@@ -1,0 +1,18 @@
+--- # Target and Task anible playbook
+#target part
+- hosts: demo       
+  user: ansible
+  become: yes         
+  connection: ssh
+ 
+#Task part
+  tasks:
+    - name: Adding users
+      user: name='{{item}}' state=present
+      with_items:
+        - Arman
+        - Arhan
+        - Huzefa
+    
+  
+

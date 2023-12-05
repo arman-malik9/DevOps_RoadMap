@@ -1,0 +1,17 @@
+--- # Target and Task ansible playbook
+#target part
+- hosts: demo       
+  user: ansible
+  become: yes         
+  connection: ssh
+#Task part
+  tasks:
+    - name: Installation of apache2 package on Debian machines. 
+      command: apt install apache2 -y
+      when: ansible_os_family == "Debian"
+   
+    - name: Installation of httpd package on RedHat machines. 
+      command: yum install httpd -y
+      when: ansible_os_family == "RedHat"
+  
+

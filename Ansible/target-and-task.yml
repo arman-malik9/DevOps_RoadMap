@@ -1,0 +1,12 @@
+--- # Target and Task ansible playbook
+#target part
+- hosts: demo       
+  user: ansible
+  become: yes         
+  connection: ssh
+#Task part
+  tasks:
+    - name: Installation of apache2 server #This is just a msg to show on console what task is going on.
+      action: apt name=apache2 state=present
+  
+

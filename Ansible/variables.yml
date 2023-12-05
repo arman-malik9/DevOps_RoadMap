@@ -1,0 +1,14 @@
+--- # Target and Task anible playbook
+#target part
+- hosts: demo       
+  user: ansible
+  become: yes         
+  connection: ssh
+  vars:
+    packagename: tree
+#Task part
+  tasks:
+    - name: Installation of tree package.
+      action: apt name='{{packagename}}' state=present
+  
+

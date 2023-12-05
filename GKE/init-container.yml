@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: initContainer
+spec:
+  initcontainers:
+  - name: c1
+    image: centos
+    command: ["/bin/bash", "-c", "echo Arman malik addes by initcontainer > /tmp/xchange; sleep 10"]
+    volumeMounts:
+      - name: xchange
+        mountPath: "/tmp/xchange"
+  containers:
+  - name: c1
+    image: centos
+    command: ["/bin/bash", "-c", "sleep 100"]
+    volumeMounts:                                    # Mount definition inside the container
+      - name: xchange
+        mountPath: "/tmp/data"          
+  volumes:                                                   
+  - name: xchange
+    emptyDir: {}

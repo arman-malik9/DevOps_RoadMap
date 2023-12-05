@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+ name: multicontainer-pod
+ annotations:
+  description: This is the example of multicontainer pod
+spec:
+ containers:
+  - name: c00
+    image: ubuntu
+    command: ["/bin/bash", "-c", "while true; do echo I am from container c00; sleep 8; done"]
+  - name: c01
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo I am from container c01; sleep 5; done"]
